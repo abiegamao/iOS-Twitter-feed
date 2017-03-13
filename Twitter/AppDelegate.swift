@@ -21,8 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
+/*
         let homeLayout = HomeController(collectionViewLayout: UICollectionViewFlowLayout())
-        window?.rootViewController = UINavigationController(rootViewController: homeLayout)
+        window?.rootViewController = UINavigationController(rootViewController: homeLayout)*/
+        window?.rootViewController = UINavigationController(rootViewController: HomeDataSourceController())
+
         return true
     }
 
