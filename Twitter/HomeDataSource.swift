@@ -12,7 +12,7 @@ import LBTAComponents
 
 class HomeDataSource: Datasource {
     
-    let words = ["one","two","three","four"]
+    let words = ["one","two","three"]
     
     override func headerClasses() -> [DatasourceCell.Type]? {
         return [UserHeader.self]
