@@ -8,13 +8,11 @@
 
 import LBTAComponents
 
-
-
 class HomeDataSource: Datasource {
     
     let users : [User] = {
-        let user1 = User(name: "Joenabie Gamao", userName: "@abiegamao", bioText: "She likes to code,read dance and eat. How wonderful is his Grace for me. She doesn't mind being alone. It increases her stamina and productivity.", profileImage: #imageLiteral(resourceName: "profile_image"))
-        let user2 = User(name: "Edison Villamor", userName: "@edisonv7", bioText: "Good boy. Sweet. Caring. Honest",profileImage: #imageLiteral(resourceName: "edison"))
+        let user1 = User(name: "Joenabie Gamao", userName: "@abiegamao", bioText: "She likes to code,read and eat. She doesn't mind being alone. It increases her stamina and productivity.", profileImage: #imageLiteral(resourceName: "profile_image"))
+        let user2 = User(name: "Edison Villamor", userName: "@edisonv7", bioText: "Good boy. Sweet. Caring. Honest. ",profileImage: #imageLiteral(resourceName: "edison"))
 
         return [user1,user2]
     }()//["one","two","three"]

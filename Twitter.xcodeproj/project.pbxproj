@@ -17,6 +17,7 @@
 		957E97DB1E72EA14005BD2BE /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E97DA1E72EA14005BD2BE /* HomeDataSource.swift */; };
 		957E97DD1E770210005BD2BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E97DC1E770210005BD2BE /* User.swift */; };
 		957E97DF1E771201005BD2BE /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E97DE1E771201005BD2BE /* UserCell.swift */; };
+		957E97E11E780566005BD2BE /* HomeDataSourceController+navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E97E01E780566005BD2BE /* HomeDataSourceController+navbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		957E97DA1E72EA14005BD2BE /* HomeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		957E97DC1E770210005BD2BE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		957E97DE1E771201005BD2BE /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		957E97E01E780566005BD2BE /* HomeDataSourceController+navbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeDataSourceController+navbar.swift"; sourceTree = "<group>"; };
 		C4BC513B37C8F914E7B04C26 /* Pods-Twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.debug.xcconfig"; sourceTree = "<group>"; };
 		F318C5FC46EA3E3EA8B98E2D /* Pods-Twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				9514D2101E704A9C0069687D /* HomeDataSourceController.swift */,
+				957E97E01E780566005BD2BE /* HomeDataSourceController+navbar.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				9514D20F1E6EAEA90069687D /* HomeController.swift in Sources */,
 				957E97D91E72E9EC005BD2BE /* UserHeader.swift in Sources */,
 				957E97DD1E770210005BD2BE /* User.swift in Sources */,
+				957E97E11E780566005BD2BE /* HomeDataSourceController+navbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
