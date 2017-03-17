@@ -19,6 +19,7 @@ class UserFooter: DatasourceCell {
     let textLabel : UILabel = {
         let txt = UILabel()
         txt.text = "Show me more"
+        //txt.backgroundColor = .f
         txt.font = UIFont.systemFont(ofSize: 15)
         txt.textColor = twitterBlue
         return txt
@@ -26,9 +27,16 @@ class UserFooter: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
+        //backgroundColor = .white
+        let whiteBGView = UIView()
+        whiteBGView.backgroundColor = .white
         showSeparator(dc: self)
+        addSubview(whiteBGView)
         addSubview(textLabel)
-        textLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        
+        whiteBGView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 14, rightConstant: 0, widthConstant: 0, heightConstant: 0) // white bg for show me more
+        
+        textLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 14, rightConstant: 0, widthConstant: 0, heightConstant: 0) // 14 for divider
     }
 }
 
@@ -42,6 +50,7 @@ class UserHeader: DatasourceCell {
     }()
     override func setupViews() {
         super.setupViews()
+        backgroundColor = .white
         showSeparator(dc: self)
         addSubview(textLabel)
         textLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)

@@ -11,10 +11,15 @@ import LBTAComponents
 
 extension HomeDataSourceController{
     
+    // Rotate Screen
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionViewLayout.invalidateLayout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBarItems()
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = UIColor(r: 232, g: 236, b: 241)
         let homeDataSource = HomeDataSource()
         self.datasource = homeDataSource
     }
@@ -34,13 +39,25 @@ extension HomeDataSourceController{
             let estimatedFrame = NSString(string: user.bioText).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 66 ) // + top padding height of 2 labels
         }
-        return CGSize(width: view.frame.width, height: 0)
+        return CGSize(width: view.frame.width, height: 200) //default: must have
     }
+    // MARK: Header
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 1 {
+            return .zero
+        }
+        //section == 1 ?? .zero
         return CGSize(width: view.frame.width , height: 50)
+    }
+    // MARK: Footer
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == 1 {
+            return .zero
+        }
+        return CGSize(width: view.frame.width , height: 64)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width , height: 50)
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
     }
 }

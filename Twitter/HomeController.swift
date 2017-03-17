@@ -10,14 +10,12 @@ import UIKit
 
 // Register a cell - called when dequeued
 class WordCell: UICollectionViewCell{
-    
     // Properties
     let textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "This is a text"
         return label
-    
     }()
     
     override init(frame: CGRect) {
@@ -67,6 +65,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         //cell.tex
         return cell
     }
+    
     // Header Cell // Footer Cell
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -78,10 +77,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             let footer  = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerId, for: indexPath)
             footer.backgroundColor = .green
             return footer
-        
         }
-
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -91,7 +87,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 100)
     }
-    
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 50)

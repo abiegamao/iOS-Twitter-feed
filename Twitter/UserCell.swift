@@ -26,7 +26,6 @@ class UserCell: DatasourceCell {
             guard let user = datasourceItem as? User else {
                 return
             }
-            
             nameLabel.text = user.name
             userNameLabel.text = user.userName
             bioTextView.text = user.bioText
@@ -72,7 +71,7 @@ class UserCell: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
-        //backgroundColor = .blue
+        backgroundColor = .white
         showSeparator(dc: self)
         addSubview(nameLabel)
         addSubview(profileImageView)
