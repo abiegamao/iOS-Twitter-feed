@@ -9,19 +9,21 @@
 import LBTAComponents
 
 class TweetCell: DatasourceCell {
-    let profileImageView: UIImageView = {
-        let imageView = UIImageView()
+    let profileImageView: CachedImageView = {
+        let imageView = CachedImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.image = #imageLiteral(resourceName: "profile_image")
         imageView.layer.cornerRadius = 5.0
         imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        //imageView.translatesAutoresizingMaskIntoConstraints = false
+        //imageView.loadImage(urlString: user)
         return imageView
     }()
     
     let messageTextView: UITextView = {
         let tv = UITextView()
         tv.text = "Sample"
+        tv.font = UIFont.systemFont(ofSize: 15)
         tv.backgroundColor = .clear
         return tv
     }()
@@ -74,8 +76,9 @@ class TweetCell: DatasourceCell {
             attributedText.append(NSAttributedString(string: tweet.message, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 15)]))
                 
             messageTextView.attributedText = attributedText
+            profileImageView.loadImage(urlString: tweet.user.profileImageUrl)
             
-                  }
+                }
     }
     
     override func setupViews() {

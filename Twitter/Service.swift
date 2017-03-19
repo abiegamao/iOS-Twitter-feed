@@ -22,7 +22,7 @@ struct Service {
     }
     
     func fetchHomeFeed(completion: @escaping (HomeDataSource?, Error?) -> ())  { //datatype
-        let request : APIRequest<HomeDataSource,JsonError> = tron.request("/twitter/home_with_error")
+        let request : APIRequest<HomeDataSource,JsonError> = tron.request("/twitter/home")
         request.perform(withSuccess: { (homeDataSource) in
             print("Successfully parsed Json Objects")
             print(homeDataSource.users.count)

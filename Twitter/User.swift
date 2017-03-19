@@ -15,11 +15,13 @@ struct User {
     let userName: String
     let bioText: String
     let profileImage: UIImage
+    let profileImageUrl: String
     
     init(json: JSON) {
         self.name = json["name"].stringValue
         self.userName = json["username"].stringValue
         self.bioText = json["bio"].stringValue
         self.profileImage = UIImage()//json["profileImageUrl"].
+        self.profileImageUrl = json["profileImageUrl"].stringValue
     }
 }
