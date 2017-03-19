@@ -16,18 +16,23 @@ class HomeDataSource: Datasource, JSONDecodable {
     required init(json: JSON) {
         print("Now Ready to parse that Json: ",json)
         var users = [User]()
+        var tweets = [Tweet]()
         
-        let array = json["users"].array
+        let usersJsonArray = json["users"].array
+        let tweetsJsonArray = json["tweets"].array
         //print(array)
-        for userJson in array!{
-            let name = userJson["name"].stringValue
-            let username = userJson["username"].stringValue
-            //let profile_imageUrl =  userJson["profileImageUrl"].stringValue
-            let bio = userJson["bio"].stringValue
-            let user = User(name: name, userName: username, bioText: bio, profileImage: UIImage())
+        for userJson in usersJsonArray!{
+            let user = User(json: userJson)
             users.append(user)
-            print(user.userName)
+            //print(user.userName)
         }
+        
+        for tweetsJson in tweetsJsonArray!{
+            let tweet = Tweet(json: tweetsJson)
+            tweets.append(tweet)
+            
+        }
+        self.tweets = tweets
         self.users = users
     }
 
@@ -42,14 +47,7 @@ class HomeDataSource: Datasource, JSONDecodable {
     }()
     */
 
-    let tweets: [Tweet] = {
-        let abzUser = User(name: "Abz Maxey", userName: "@jmgamao", bioText: "Hi!", profileImage: UIImage(named: "profile_image")!)
-        let tweet = Tweet(user: abzUser, message: "Welcome to the app user!")
-        
-        let tweet2 = Tweet(user: abzUser, message: "This is the second tweet message for our sample project. Very very exciting message....")
-        
-        return [tweet, tweet2]
-    }()
+    let tweets: [Tweet]
     
     override func headerClasses() -> [DatasourceCell.Type]? {
         return [UserHeader.self]
