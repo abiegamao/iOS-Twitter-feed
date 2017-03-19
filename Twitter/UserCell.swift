@@ -16,7 +16,8 @@ class UserCell: DatasourceCell {
         imageView.layer.cornerRadius = 5.0
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .red
+        imageView.image = #imageLiteral(resourceName: "profile_image")
+        //imageView.backgroundColor = .red
         return imageView
     }()
     // Set input
