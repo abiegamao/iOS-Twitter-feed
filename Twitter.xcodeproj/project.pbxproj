@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75FBEBBB0C2227CA90BF9629 /* Pods_Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AE9C0D99B79EA5DA3248ED /* Pods_Twitter.framework */; };
 		9514D1FD1E6EAA750069687D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9514D1FC1E6EAA750069687D /* AppDelegate.swift */; };
 		9514D1FF1E6EAA750069687D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9514D1FE1E6EAA750069687D /* ViewController.swift */; };
 		9514D2041E6EAA750069687D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9514D2031E6EAA750069687D /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		957E97E21E78421E005BD2BE /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		957E97E41E78DD1C005BD2BE /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C4BC513B37C8F914E7B04C26 /* Pods-Twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.debug.xcconfig"; sourceTree = "<group>"; };
+		D0AE9C0D99B79EA5DA3248ED /* Pods_Twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F318C5FC46EA3E3EA8B98E2D /* Pods-Twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75FBEBBB0C2227CA90BF9629 /* Pods_Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +71,7 @@
 				9514D1FB1E6EAA750069687D /* Twitter */,
 				9514D1FA1E6EAA750069687D /* Products */,
 				1794D2C1A2F73795D99E6351 /* Pods */,
+				BF350A9F1F116850110399A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +126,14 @@
 				957E97E01E780566005BD2BE /* HomeDataSourceController+navbar.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		BF350A9F1F116850110399A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0AE9C0D99B79EA5DA3248ED /* Pods_Twitter.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

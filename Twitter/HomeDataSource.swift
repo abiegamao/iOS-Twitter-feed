@@ -7,19 +7,44 @@
 //
 
 import LBTAComponents
+import TRON
+import SwiftyJSON
 
-class HomeDataSource: Datasource {
+class HomeDataSource: Datasource, JSONDecodable {
+    let users : [User]
+    /// Creates model object from SwiftyJSON.JSON struct.
+    required init(json: JSON) {
+        print("Now Ready to parse that Json: ",json)
+        var users = [User]()
+        
+        let array = json["users"].array
+        //print(array)
+        for userJson in array!{
+            let name = userJson["name"].stringValue
+            let username = userJson["username"].stringValue
+            let profile_imageUrl =  userJson["profileImageUrl"].stringValue
+            let bio = userJson["bio"].stringValue
+            let user = User(name: name, userName: username, bioText: bio, profileImage: UIImage())
+            users.append(user)
+            print(user.userName)
+        }
+        self.users = users
+    }
+
+
     
+/*
     let users : [User] = {
         let user1 = User(name: "Joenabie Gamao", userName: "@abiegamao", bioText: "She likes to code,read and eat. She doesn't mind being alone. It increases her stamina and productivity.", profileImage: #imageLiteral(resourceName: "profile_image"))
-        let user2 = User(name: "Edison Villamor", userName: "@edisonv7", bioText: "Good boy. Sweet. Caring. Honest. ",profileImage: #imageLiteral(resourceName: "edison"))
+        let user2 = User(name: "Edison Villamor", userName: "@edisonv7", bioText: "Something here. Dangerous",profileImage: #imageLiteral(resourceName: "edison"))
 
         return [user1,user2,user1]
     }()
-    
+    */
+
     let tweets: [Tweet] = {
-        let abzUser = User(name: "Abz Maxey", userName: "@jmgamao", bioText: "iPhone, iPad, iOS Programming Community. Join us to learn Swift, Objective-C and build iOS apps!", profileImage: UIImage(named: "profile_image")!)
-        let tweet = Tweet(user: abzUser, message: "Welcome to episode 9 of the Twitter Series, really hope you guys are enjoying the series so far. I really really need a long text block to render out so we're going to stop here.")
+        let abzUser = User(name: "Abz Maxey", userName: "@jmgamao", bioText: "Hi!", profileImage: UIImage(named: "profile_image")!)
+        let tweet = Tweet(user: abzUser, message: "Welcome to the app user!")
         
         let tweet2 = Tweet(user: abzUser, message: "This is the second tweet message for our sample project. Very very exciting message....")
         

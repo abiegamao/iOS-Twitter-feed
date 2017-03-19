@@ -9,7 +9,7 @@
 import UIKit
 import LBTAComponents
 
-class HomeDataSourceController: DatasourceController{
+extension HomeDataSourceController{
     
     func setUpNavigationBarItems()  {
         setUpTitleNav()

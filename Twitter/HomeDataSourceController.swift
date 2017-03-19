@@ -8,8 +8,10 @@
 
 import UIKit
 import LBTAComponents
+import TRON
+import SwiftyJSON
 
-extension HomeDataSourceController{
+class HomeDataSourceController: DatasourceController{
     
     // Rotate Screen
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -20,8 +22,53 @@ extension HomeDataSourceController{
         super.viewDidLoad()
         setUpNavigationBarItems()
         collectionView?.backgroundColor = UIColor(r: 232, g: 236, b: 241)
-        let homeDataSource = HomeDataSource()
-        self.datasource = homeDataSource
+        //let homeDataSource = HomeDataSource()
+        //self.datasource = homeDataSource
+        fetchHomeFeed()
+    }
+    
+    
+    
+    class Home: JSONDecodable{
+        let users: [User]
+        
+        required init(json: JSON) {
+            print("Now Ready to parse that Json: ",json)
+            var users = [User]()
+            
+            let array = json["users"].array
+            //print(array)
+            for userJson in array!{
+                let name = userJson["name"].stringValue
+                let username = userJson["username"].stringValue
+                //let profile_imageUrl =  userJson["profileImageUrl"].stringValue
+                let bio = userJson["bio"].stringValue
+                let user = User(name: name, userName: username, bioText: bio, profileImage: UIImage())
+                users.append(user)
+                //print(user.userName)
+            }
+            self.users = users
+        }
+    }
+    
+    class JsonError: JSONDecodable {
+        required init(json: JSON) throws {
+            print("JSON error!")
+        }
+    }
+    
+    let tron = TRON(baseURL: "https://api.letsbuildthatapp.com")
+    
+    fileprivate func fetchHomeFeed() {
+        let request : APIRequest<HomeDataSource,JsonError> = tron.request("/twitter/home")
+        request.perform(withSuccess: { (homeDataSource) in
+            print("Successfully parsed Json Objects")
+            print(homeDataSource.users.count)
+            self.datasource = homeDataSource // fill controller w/ data!
+        }) { (err) in
+            print("Error occurred upon parsing Json",err)
+        }
+        //print("123")
     }
 
     // Cell Divider Padding
@@ -37,7 +84,7 @@ extension HomeDataSourceController{
             let size = CGSize(width: approximateWidthOfBioTextView, height: 1000)
             let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
             let estimatedFrame = NSString(string: user.bioText).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            return CGSize(width: view.frame.width, height: estimatedFrame.height + 66 ) // + top padding height of 2 labels
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 88 ) // + top padding height of 2 labels
         }
         return CGSize(width: view.frame.width, height: 200) //default: must have
     }
