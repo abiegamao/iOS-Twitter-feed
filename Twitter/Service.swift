@@ -21,14 +21,15 @@ struct Service {
         }
     }
     
-    func fetchHomeFeed(completion: @escaping (HomeDataSource) -> ())  { //datatype
-        let request : APIRequest<HomeDataSource,JsonError> = tron.request("/twitter/home")
+    func fetchHomeFeed(completion: @escaping (HomeDataSource?, Error?) -> ())  { //datatype
+        let request : APIRequest<HomeDataSource,JsonError> = tron.request("/twitter/home_with_error")
         request.perform(withSuccess: { (homeDataSource) in
             print("Successfully parsed Json Objects")
             print(homeDataSource.users.count)
-            completion(homeDataSource)
+            completion(homeDataSource,nil)
             //self.datasource = homeDataSource // fill controller w/ data!
         }) { (err) in
+            completion(nil,err)
             print("Error occurred upon parsing Json",err)
         }
     }

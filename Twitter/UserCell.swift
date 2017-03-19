@@ -12,11 +12,11 @@ class UserCell: DatasourceCell {
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "profile_image")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 5.0
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = #imageLiteral(resourceName: "profile_image")
         //imageView.backgroundColor = .red
         return imageView
     }()

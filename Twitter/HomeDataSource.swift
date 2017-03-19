@@ -14,14 +14,16 @@ class HomeDataSource: Datasource, JSONDecodable {
     var users : [User]
     var tweets: [Tweet]
     /// Creates model object from SwiftyJSON.JSON struct.
-    required init(json: JSON) {
+    required init(json: JSON) throws{
         //print("Now Ready to parse that Json: ",json)
-        let usersJsonArray = json["users"].array
-        let tweetsJsonArray = json["tweets"].array
+        guard let usersJsonArray = json["users"].array,
+              let tweetsJsonArray = json["tweets"].array else{
+            throw NSError(domain: "com.abz", code: 1, userInfo: [NSLocalizedDescriptionKey: "Parsing JSON is invalid"])
+        }
         // Mapping Shorthand Version
-        self.users = usersJsonArray!.map{ return User(json: $0) }
+        self.users = usersJsonArray.map{ return User(json: $0) }
         // Long Version
-        self.tweets = tweetsJsonArray!.map({ (yea) -> Tweet in
+        self.tweets = tweetsJsonArray.map({ (yea) -> Tweet in
             return Tweet(json: yea)
         })
         

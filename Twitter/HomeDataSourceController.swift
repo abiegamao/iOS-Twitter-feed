@@ -13,24 +13,42 @@ import SwiftyJSON
 
 class HomeDataSourceController: DatasourceController{
     
-    // Rotate Screen
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionViewLayout.invalidateLayout()
-    }
+    let errorMessageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Apologies Something went wrong. Please Try Again. "
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isHidden = true
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(errorMessageLabel)
+        errorMessageLabel.fillSuperview()
+        
         setUpNavigationBarItems()
         collectionView?.backgroundColor = UIColor(r: 232, g: 236, b: 241)
-        
-        Service.sharedInstance.fetchHomeFeed { (homeDataSource) in
+        Service.sharedInstance.fetchHomeFeed { (homeDataSource, err) in
+            if let _ = err  {
+                //print("Error parsing:", err)
+                self.errorMessageLabel.isHidden = false
+                if let apiError = err as? APIError<Service.JsonError>{
+                    
+                    if apiError.response?.statusCode != 200 {
+                       self.errorMessageLabel.text = "404 not found"
+                    }else {
+                        self.errorMessageLabel.text = "Invalid Parsing of JSON"
+                    }
+                    
+                }
+                return
+            }
             self.datasource = homeDataSource
         }
+
     }
     
-
-
-
     // Cell Divider Padding
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
