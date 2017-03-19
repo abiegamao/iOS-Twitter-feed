@@ -22,7 +22,7 @@ class HomeDataSource: Datasource, JSONDecodable {
         for userJson in array!{
             let name = userJson["name"].stringValue
             let username = userJson["username"].stringValue
-            let profile_imageUrl =  userJson["profileImageUrl"].stringValue
+            //let profile_imageUrl =  userJson["profileImageUrl"].stringValue
             let bio = userJson["bio"].stringValue
             let user = User(name: name, userName: username, bioText: bio, profileImage: UIImage())
             users.append(user)
