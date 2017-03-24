@@ -82,7 +82,6 @@ class HomeDataSourceController: DatasourceController{
         return estimatedFrame.height
     }
     
-    
     // MARK: Header
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 1 {

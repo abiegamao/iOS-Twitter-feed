@@ -8,9 +8,11 @@
 
 import UIKit
 import SwiftyJSON
+import TRON
+
 
 // We use struct coz its pretty straightforward and already has constructors
-struct User {
+struct User : JSONDecodable { // Conform to JSON Decodable
     let name: String
     let userName: String
     let bioText: String

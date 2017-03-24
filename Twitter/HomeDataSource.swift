@@ -10,6 +10,15 @@ import LBTAComponents
 import TRON
 import SwiftyJSON
 
+extension Collection where Iterator.Element == JSON { // restrict to Json arrays only
+
+    func decode<T: JSONDecodable>() throws -> [T]  {
+        return try map({try T(json: $0)})
+        //return []
+    }
+}
+
+
 class HomeDataSource: Datasource, JSONDecodable {
     var users : [User]
     var tweets: [Tweet]
@@ -26,6 +35,14 @@ class HomeDataSource: Datasource, JSONDecodable {
         self.tweets = tweetsJsonArray.map({ (yea) -> Tweet in
             return Tweet(json: yea)
         })
+        
+        // Remove Downcasting to implement Generics
+        self.users = try usersJsonArray.decode()
+        self.tweets = try tweetsJsonArray.decode()
+        
+        //[1, 2].decode()
+        
+        
         
     }
     
